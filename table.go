@@ -42,9 +42,9 @@ func Create(data [][]string) string {
 	fmt.Fprint(&table, line)
 
 	rowTemplate := fmt.Sprintf("\n|%s\n%%s", strings.Repeat(" %-*s |", numCol))
-
+	args := make([]interface{}, 0, numCol*2+1)
 	for _, row := range data {
-		args := make([]interface{}, 0, len(colPadding)+len(row)+1)
+		args = args[:0]
 		for i := range colPadding {
 			args = append(args, colPadding[i], row[i])
 		}

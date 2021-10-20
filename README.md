@@ -1,37 +1,39 @@
-# Key-Value Table
+# Table
 
-A simple utility to make key-value tables.
+A simple utility to make ascii tables.
 
 ## Usage
+
+Each row must have the same amount of columns.
 
 ```golang
 package main
 
 import (
-  "github.com/theverything/kvtable"
+  "github.com/theverything/table"
 )
 
 func main() {
-  rows := []kvtable.Row{
-    {
-      Key: "foo",
-      Value: "bar",
-    },
-    {
-      Key: "fizz",
-      Value: "buzz",
-    },
+  rows := [][]string{
+    {"foo", "bar", "bing", "bong"},
+    {"fizz", "buzz", "hello", "world"},
+    {"one", "two", "three", "four"},
+    {"1", "2", "3", "4"},
   }
-  fmt.Println(kvtable.Create(rows))
+  fmt.Println(table.Create(rows))
 }
 ```
 
 ## Output
 
 ```txt
-+-------------+
-| foo  | bar  |
-+-------------+
-| fizz | buzz |
-+-------------+
++-----------------------------+
+| foo  | bar  | bing  | bong  |
++-----------------------------+
+| fizz | buzz | hello | world |
++-----------------------------+
+| one  | two  | three | four  |
++-----------------------------+
+| 1    | 2    | 3     | 4     |
++-----------------------------+
 ```
